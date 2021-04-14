@@ -195,10 +195,24 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(arr){
+    let wordCount = [];
+    let words = [];
+    let count = 0;
+    for(let i  = 0; i < arr.length; i++){
+        words = arr[i].split(" ");
+        wordCount.push(words.length);
+        // console.log(wordCount);
+    }
+    for(let j = 0; j < wordCount.length; j++){
+        count += wordCount[j];
+    }
+    // console.log(count);
+    // console.log(arr.length);
+    let avg = (count / arr.length);
+    return avg;
 }
-
+console.log(getAverageWordLength(originalFlavors));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
 Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
@@ -211,11 +225,6 @@ Use the getRandomFlavors function and new arrays below to do the following:
 
     For example: getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) might return ["Strawberry Cheesecake", "Eggnog,"..."Chocolate"].
 */
-
-
-function getRandomFlavors(/*code here*/){
-    /*code here*/
-}
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 const newFlavors = [
@@ -297,6 +306,24 @@ const regionalFlavors = [
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"
 ]
+
+function getRandomFlavors(arr1, arr2, arr3, arr4){
+    let allFlavors = [].concat(arr1, arr2, arr3, arr4);
+    // let allFlavors = [...arr1,...arr2,...arr3,...arr4];
+    console.log(allFlavors.length);
+    console.log(allFlavors);
+    let randomFlavors = [];
+    for(let i = 0; i < 31; i++){
+        randomFlavors.push(allFlavors[Math.floor(Math.random() * allFlavors.length)]);
+    }
+    return randomFlavors;
+}
+
+let flavorList = getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors);
+console.log(flavorList);
+console.log(flavorList.length);
+
+
 
 
 
